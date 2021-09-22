@@ -136,7 +136,9 @@
                 <button onclick="UntickAll();">Untick All</button>
             </td>
             <td style="border:none;vertical-align:text-top;text-align:left">
+                <button id="outputToggle" onclick="ToggleOutput()">Show Exclude List</button><br/><br />
                 <span id="output"></span>
+                
             </td>
         </tr>
     </table>
@@ -144,7 +146,22 @@
     <script>
         var tickGrid = document.getElementById('tickGrid');
         var output = document.getElementById("output");
-        GenerateOutput();
+
+        var showIncludes = false;
+        ToggleOutput();
+
+        function ToggleOutput() {
+            showIncludes = showIncludes == false;
+
+            var btn = document.getElementById("outputToggle");
+
+            if (showIncludes) 
+                btn.innerHTML = "Show Exclude List";
+            else
+                btn.innerHTML = "Show Include List";
+
+            GenerateOutput();
+        }
 
         function ToggleRow(tick, sender) {
             var row = sender.parentElement.parentElement;
@@ -211,13 +228,19 @@
             GenerateOutput();
         }
 
-        function GenerateOutput() {
-            var s = "";
+        function GenerateOutput() {            
             var elems = tickGrid.getElementsByTagName("img");
+
+            var checkString = "yes_check.png";
+            var outputString = "<b>Inclusion List:</b>"
+            if (!showIncludes) {
+                checkString = "cross_mark.png";
+                outputString ="<b>Exclusion List:</b>"
+            }
 
             var ids = [];
             for (var i = 0; i < elems.length; i++) {
-                if (elems[i].id !== "" && elems[i].src.toLowerCase().endsWith("yes_check.png")) {
+                if (elems[i].id !== "" && elems[i].src.toLowerCase().endsWith(checkString)) {
                     ids.push(parseInt(elems[i].id));
                 }
             }
@@ -226,11 +249,12 @@
                 return a - b;
             });
 
+
             for (var i = 0; i < ids.length; i++)
             {
-                s += "<br/>Soil Type " + ids[i];
+                outputString += "<br/>Soil Type " + ids[i];
             }                
-            output.innerHTML = s;
+            output.innerHTML = outputString;
         }
     </script>
 </body>
