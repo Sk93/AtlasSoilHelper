@@ -1,0 +1,237 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Atlas Soil Type Helper</title>
+    <style>
+        table{
+            text-align:center;
+            border: 1px solid black;
+            border-collapse: collapse;
+            border-spacing: 2px;
+            margin:1em 0;
+        }
+
+        td {
+            padding:9px;
+            border:1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <table style="border:none">
+        <tr>
+            <td style="border: none; vertical-align: text-top;" id="tickGrid">
+                <table>
+                    <thead>
+                        <tr>
+                            <td rowspan="2">Surface</td>
+                            <td colspan="7">Biome</td>
+                        </tr>
+                        <tr>
+                            <td>Equatorial</td>
+                            <td>Desert</td>
+                            <td>Tropical</td>
+                            <td>Temperate</td>
+                            <td>Tundra</td>
+                            <td>Polar</td>
+                            <td></td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Thatch</td>
+                            <td><img id="30" src="yes_check.png" onclick="ChangeTick(this);" /></td>
+                            <td><img id="31" src="yes_check.png" onclick="ChangeTick(this);" /></td>
+                            <td><img id="32" src="yes_check.png" onclick="ChangeTick(this);" /></td>
+                            <td><img id="29" src="yes_check.png" onclick="ChangeTick(this);" /></td>
+                            <td><img id="28" src="yes_check.png" onclick="ChangeTick(this);" /></td>
+                            <td><img id="" src="cross_mark.png" onclick="alert('Polar thatch does not exist');" /></td>
+                            <td><button onclick="ToggleRow(1,this);">All</button><button onclick="ToggleRow(0,this);">None</button></td>
+                        </tr>
+                        <tr>
+                            <td>Wood</td>
+                            <td><img id="35" src="yes_check.png" onclick="ChangeTick(this);" /></td>
+                            <td><img id="36" src="yes_check.png" onclick="ChangeTick(this);" /></td>
+                            <td><img id="37" src="yes_check.png" onclick="ChangeTick(this);" /></td>
+                            <td><img id="34" src="yes_check.png" onclick="ChangeTick(this);" /></td>
+                            <td><img id="33" src="yes_check.png" onclick="ChangeTick(this);" /></td>
+                            <td><img id="" src="cross_mark.png" onclick="alert('Polar wood does not exist');" /></td>
+                            <td><button onclick="ToggleRow(1,this);">All</button><button onclick="ToggleRow(0,this);">None</button></td>
+                        </tr>
+                        <tr>
+                            <td>Rock</td>
+                            <td><img id="19" src="yes_check.png" onclick="ChangeTick(this);" /></td>
+                            <td><img id="20" src="yes_check.png" onclick="ChangeTick(this);" /></td>
+                            <td><img id="21" src="yes_check.png" onclick="ChangeTick(this);" /></td>
+                            <td><img id="18" src="yes_check.png" onclick="ChangeTick(this);" /></td>
+                            <td><img id="17" src="yes_check.png" onclick="ChangeTick(this);" /></td>
+                            <td><img id="22" src="yes_check.png" onclick="ChangeTick(this);" /></td>
+                            <td><button onclick="ToggleRow(1,this);">All</button><button onclick="ToggleRow(0,this);">None</button></td>
+                        </tr>
+                        <tr>
+                            <td>Dirt</td>
+                            <td><img id="3" src="yes_check.png" onclick="ChangeTick(this);" /></td>
+                            <td><img id="4" src="yes_check.png" onclick="ChangeTick(this);" /></td>
+                            <td><img id="5" src="yes_check.png" onclick="ChangeTick(this);" /></td>
+                            <td><img id="2" src="yes_check.png" onclick="ChangeTick(this);" /></td>
+                            <td><img id="6" src="yes_check.png" onclick="ChangeTick(this);" /></td>
+                            <td><img id="1" src="yes_check.png" onclick="ChangeTick(this);" /></td>
+                            <td><button onclick="ToggleRow(1,this);">All</button><button onclick="ToggleRow(0,this);">None</button></td>
+                        </tr>
+                        <tr>
+                            <td>Grass</td>
+                            <td><img id="8" src="yes_check.png" onclick="ChangeTick(this);" /></td>
+                            <td><img id="9" src="yes_check.png" onclick="ChangeTick(this);" /></td>
+                            <td><img id="10" src="yes_check.png" onclick="ChangeTick(this);" /></td>
+                            <td><img id="7" src="yes_check.png" onclick="ChangeTick(this);" /></td>
+                            <td><img id="11" src="yes_check.png" onclick="ChangeTick(this);" /></td>
+                            <td><img id="" src="cross_mark.png" onclick="alert('Polar Grass does not exist');" /></td>
+                            <td><button onclick="ToggleRow(1,this);">All</button><button onclick="ToggleRow(0,this);">None</button></td>
+                        </tr>
+                        <tr>
+                            <td>Leaves</td>
+                            <td><img id="13" src="yes_check.png" onclick="ChangeTick(this);" /></td>
+                            <td><img id="14" src="yes_check.png" onclick="ChangeTick(this);" /></td>
+                            <td><img id="15" src="yes_check.png" onclick="ChangeTick(this);" /></td>
+                            <td><img id="12" src="yes_check.png" onclick="ChangeTick(this);" /></td>
+                            <td><img id="16" src="yes_check.png" onclick="ChangeTick(this);" /></td>
+                            <td><img id="" src="cross_mark.png" onclick="alert('Polar Leaves does not exist');" /></td>
+                            <td><button onclick="ToggleRow(1,this);">All</button><button onclick="ToggleRow(0,this);">None</button></td>
+                        </tr>
+                        <tr>
+                            <td>Sand</td>
+                            <td><img id="25" src="yes_check.png" onclick="ChangeTick(this);" /></td>
+                            <td><img id="26" src="yes_check.png" onclick="ChangeTick(this);" /></td>
+                            <td><img id="27" src="yes_check.png" onclick="ChangeTick(this);" /></td>
+                            <td><img id="24" src="yes_check.png" onclick="ChangeTick(this);" /></td>
+                            <td><img id="23" src="yes_check.png" onclick="ChangeTick(this);" /></td>
+                            <td><img id="28" src="yes_check.png" onclick="ChangeTick(this);" /></td>
+                            <td><button onclick="ToggleRow(1,this);">All</button><button onclick="ToggleRow(0,this);">None</button></td>
+                        </tr>
+                        <tr>
+                            <td>Water</td>
+                            <td><img id="45" src="yes_check.png" onclick="ChangeTick(this);" /></td>
+                            <td><img id="46" src="yes_check.png" onclick="ChangeTick(this);" /></td>
+                            <td><img id="47" src="yes_check.png" onclick="ChangeTick(this);" /></td>
+                            <td><img id="44" src="yes_check.png" onclick="ChangeTick(this);" /></td>
+                            <td><img id="43" src="yes_check.png" onclick="ChangeTick(this);" /></td>
+                            <td><img id="" src="cross_mark.png" onclick="alert('Polar water does not exist');" /></td>
+                            <td><button onclick="ToggleRow(1,this);">All</button><button onclick="ToggleRow(0,this);">None</button></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td><button onclick="ToggleCol(1,this);">All</button><button onclick="ToggleCol(0,this);">None</button></td>
+                            <td><button onclick="ToggleCol(1,this);">All</button><button onclick="ToggleCol(0,this);">None</button></td>
+                            <td><button onclick="ToggleCol(1,this);">All</button><button onclick="ToggleCol(0,this);">None</button></td>
+                            <td><button onclick="ToggleCol(1,this);">All</button><button onclick="ToggleCol(0,this);">None</button></td>
+                            <td><button onclick="ToggleCol(1,this);">All</button><button onclick="ToggleCol(0,this);">None</button></td>
+                            <td><button onclick="ToggleCol(1,this);">All</button><button onclick="ToggleCol(0,this);">None</button></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <button onclick="TickAll();">Tick All</button>
+                <button onclick="UntickAll();">Untick All</button>
+            </td>
+            <td style="border:none;vertical-align:text-top;text-align:left">
+                <span id="output"></span>
+            </td>
+        </tr>
+    </table>
+
+    <script>
+        var tickGrid = document.getElementById('tickGrid');
+        var output = document.getElementById("output");
+        GenerateOutput();
+
+        function ToggleRow(tick, sender) {
+            var row = sender.parentElement.parentElement;
+            var elems = row.getElementsByTagName("img");
+            for (var i = 0; i < elems.length; i++) {
+                if (elems[i].id !== "") {
+                    if (tick === 1) {
+                        elems[i].src = "yes_check.png";
+                    }
+                    else {
+                        elems[i].src = "cross_mark.png";
+                    }
+                }
+            }
+            GenerateOutput();
+        }
+
+        function ToggleCol(tick, sender) {
+            var cellIndex = sender.parentElement.cellIndex;
+            var tbl = sender.parentElement.parentElement.parentElement;
+            var elems = tbl.querySelectorAll("img:not([id=''])");           
+            for (var i = 0; i < elems.length; i++) {
+                if (elems[i].id !== "") {
+                    if (elems[i].parentElement.cellIndex === cellIndex) {
+                        if (tick === 1) {
+                            elems[i].src = "yes_check.png";
+                        }
+                        else {
+                            elems[i].src = "cross_mark.png";
+                        }
+                    }
+                }
+            }
+            GenerateOutput();
+        }
+
+        function ChangeTick(owner) {
+            if (owner.src.toLowerCase().endsWith("cross_mark.png")) {
+                owner.src = "yes_check.png";
+            }
+            else {
+                owner.src = "cross_mark.png";
+            }
+            GenerateOutput();
+        }
+
+        function TickAll() {
+            var elems = tickGrid.getElementsByTagName("img");
+            for (var i = 0; i < elems.length; i++) {
+                if (elems[i].id !== "") {
+                    elems[i].src = "yes_check.png";
+                }
+            }
+            GenerateOutput();
+        }
+
+        function UntickAll() {
+            var elems = tickGrid.getElementsByTagName("img");
+            for (var i = 0; i < elems.length; i++) {
+                if (elems[i].id !== "") {
+                    elems[i].src = "cross_mark.png";
+                }
+            }
+            GenerateOutput();
+        }
+
+        function GenerateOutput() {
+            var s = "";
+            var elems = tickGrid.getElementsByTagName("img");
+
+            var ids = [];
+            for (var i = 0; i < elems.length; i++) {
+                if (elems[i].id !== "" && elems[i].src.toLowerCase().endsWith("yes_check.png")) {
+                    ids.push(parseInt(elems[i].id));
+                }
+            }
+
+            ids.sort(function (a, b) {
+                return a - b;
+            });
+
+            for (var i = 0; i < ids.length; i++)
+            {
+                s += "<br/>Soil Type " + ids[i];
+            }                
+            output.innerHTML = s;
+        }
+    </script>
+</body>
+</html>
